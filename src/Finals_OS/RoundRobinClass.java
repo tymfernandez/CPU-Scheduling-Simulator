@@ -71,6 +71,7 @@ public class RoundRobinClass extends SchedulingAlgorithm {
                     inQueue[currentProcessIndex] = true;
                 }
             }
+        calculateMetrics(); // Calculate the average metrics and CPU utilization
         } catch (Exception e) {
             // Handle any errors during scheduling
             System.err.println("Error during Round Robin scheduling: " + e.getMessage());

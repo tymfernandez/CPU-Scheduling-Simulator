@@ -106,11 +106,13 @@ public class RoundRobinClass extends SchedulingAlgorithm {
         try {
             // Display table header
             System.out.println("\nP\tAT\tBT\tCT\tTAT\tWT");
+            char processID = 'A'; // Start with process ID 'A'
             for (Process p : processes) {
                 // Print details of each process
                 System.out.printf("%-2s\t%-2d\t%-2d\t%-3d\t%-3d\t%-3d\n",
-                        p.pid, p.AT, p.BT, p.completionTime,
+                        processID, p.AT, p.BT, p.completionTime,
                         p.turnAroundTime, p.waitingTime);
+                processID++; // Move to the next process ID
             }
 
             // Display calculated averages and CPU utilization

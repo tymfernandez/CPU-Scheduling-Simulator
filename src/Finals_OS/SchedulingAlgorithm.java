@@ -75,10 +75,12 @@ public abstract class SchedulingAlgorithm {
         try {
             // Print the process details in a tabular format
             System.out.println("\nP\tAT\tBT\tCT\tTAT\tWT");
+            char processID = 'A';
             for (Process p : inputOrderProcesses) {
                 System.out.printf("%-2s\t%-2d\t%-2d\t%-3d\t%-3d\t%-3d\n",
-                        p.pid, p.AT, p.BT, p.completionTime,
+                        processID, p.AT, p.BT, p.completionTime,
                         p.turnAroundTime, p.waitingTime);
+                processID++;
             }
 
             // Print average metrics

@@ -64,7 +64,7 @@ public class Scheduling {
                 Process[] processes = new Process[n];
 
                 for (int i = 0; i < n; i++) {
-                    String pid = "P" + (i + 1);
+                    String pid = String.valueOf((char) ('A' + i));
                     int priority = 0;
 
                     // Only ask for priority if the chosen algorithm is priority scheduling

@@ -129,10 +129,12 @@ public abstract class SchedulingAlgorithm {
      */
     protected void addToGanttChart(String processId, int startTime, int endTime) {
         try {
-            // Convert processId from "P1", "P2", etc. to "A", "B", etc.
-            int processIndex = Integer.parseInt(processId.substring(1)) - 1;
-            char processLabel = (char) ('A' + processIndex);
-            ganttChart.add(new GanttChart(String.valueOf(processLabel), startTime, endTime));
+            // Ensure processId is in the correct format
+            if (processId != null && !processId.isEmpty()) {
+                ganttChart.add(new GanttChart(processId, startTime, endTime));
+            } else {
+                throw new IllegalArgumentException("Process ID is invalid: " + processId);
+            }
         } catch (Exception e) {
             System.err.println("Error adding to Gantt chart: " + e.getMessage());
             e.printStackTrace();

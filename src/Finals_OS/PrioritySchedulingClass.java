@@ -67,9 +67,6 @@ public class PrioritySchedulingClass extends SchedulingAlgorithm {
 
                 // Add or update Gantt Chart based on process execution
                 if (prevProcess != highestPriorityIndex) {
-                    if (prevProcess != -1) {
-                        ganttChart.get(ganttChart.size() - 1).endTime = currentTime;
-                    }
                     ganttChart.add(new GanttChart(processes[highestPriorityIndex].pid, currentTime, currentTime + 1));
                     prevProcess = highestPriorityIndex;
                 } else {
@@ -166,10 +163,12 @@ public class PrioritySchedulingClass extends SchedulingAlgorithm {
         try {
             // Display process details including priority
             System.out.println("\nP\tPriority\tAT\tBT\tCT\tTAT\tWT");
+            char processID = 'A';
             for (Process p : processes) {
                 System.out.printf("%-2s\t%-8d\t%-2d\t%-2d\t%-3d\t%-3d\t%-3d\n",
-                        p.pid, p.priority, p.AT, p.BT, p.completionTime,
+                        processID, p.priority, p.AT, p.BT, p.completionTime,
                         p.turnAroundTime, p.waitingTime);
+                processID++;
             }
 
             // Display average metrics and Gantt Chart
